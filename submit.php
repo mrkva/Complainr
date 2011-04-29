@@ -15,9 +15,6 @@
   // access collection
   $collection = $db->items;
 
-  // execute query
-  // retrieve all documents
-  
   echo '<script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script><script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=mrqwa"></script>';
  if ($noentry == TRUE || ($noentry == null &&  $complaint == null)) {
  	$cursor = $collection->find();
@@ -26,7 +23,11 @@
 		echo '<div style="line-height:130%;height:20px;" id="' . $obj['_id'] . '"><span class="date">' . date('d.m.y', $obj['ts']) . '</span>';
 		echo '<span class="name"><b> ' . $obj['first_name'] . '</b></span>: ';
 		echo '<span class="complaint">' . $obj['complaint'] . '</span>&nbsp;&nbsp;&nbsp;';
-		echo ' <div id="' . $obj['_id'] . '" style="display:inline;"><a href="#" onClick="vote($(this).parent()[0].id);">Vote</a></div> ';
+		if ($obj['votes'] > 0) {
+			echo ' <div id="' . $obj['_id'] . '-v" style="display:inline;"><font color=red><i>' . $obj['votes'] . ' vote(s)</i></font> ';
+			} else {
+		echo ' <div id="' . $obj['_id'] . '-v" style="display:inline;"><a href="#" onClick="vote($(this).parent()[0].id);">Vote</a></div> ';
+		}
 		echo '<a href="id/' . $obj['_id'] . '">Link and Share</a><br />';
 	}
   } else {
@@ -34,7 +35,8 @@
   $person = array(
  'first_name' => $f_name,
  'ts' => $ts,
- 'complaint' => $complaint
+ 'complaint' => $complaint,
+ 'votes' => 0
   );
 
 	$safe_insert = true;
@@ -46,9 +48,13 @@
   // print each document 
 	foreach ($cursor as $obj) {
 		echo '<div style="line-height:130%;height:20px;" id="' . $obj['_id'] . '"><span class="date">' . date('d.m.y', $obj['ts']) . '</span>';
-		echo '<span class="name">><b> ' . $obj['first_name'] . '></b></span>: ';
+		echo '<span class="name"><b> ' . $obj['first_name'] . '</b></span>: ';
 		echo '<span class="complaint">' . $obj['complaint'] . '</span>&nbsp;&nbsp;&nbsp;';
-		echo ' <div id="' . $obj['_id'] . '" style="display:inline;"><a href="#" onClick="alert($(this).parent()[0].id);">Vote</a></div> ';
+		if ($obj['votes'] > 0) {
+			echo ' <div id="' . $obj['_id'] . '-v" style="display:inline;"><font color=red><i>' . $obj['votes'] . ' vote(s)</i></font> ';
+			} else {
+		echo ' <div id="' . $obj['_id'] . '-v" style="display:inline;"><a href="#" onClick="vote($(this).parent()[0].id);">Vote</a></div> ';
+		}
 		echo '<a href="id/' . $obj['_id'] . '">Link and Share</a><br />';
 	}
   }

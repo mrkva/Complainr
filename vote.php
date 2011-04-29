@@ -1,6 +1,5 @@
 <?php
 
-  $vote = $_POST['VOTE'];
   $id = $_GET['ID'];
   $id = new MongoId($id);
   // open connection to MongoDB server
@@ -11,13 +10,17 @@
 
   // access collection
   $collection = $db->items;
-  
+
   $cursor = $collection->find(array( '_id' => $id));
+  foreach ($cursor as $obj) { 
+  	$newData = array('$inc' => array('votes' => 1));
+	$collection->update(array( '_id' => $id), $newData);
+  	}
   foreach ($cursor as $obj) {
-  	echo $obj['first_name'];
-  	echo $obj['complaint'];
+  	echo "<font color='red'><i>" . $obj['votes'] . " vote(s)</i></font>";
   	}
   
+  // disconnect from server
   $conn->close();
 
 ?>
