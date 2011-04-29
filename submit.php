@@ -24,9 +24,10 @@
   	$cursor = $cursor->sort(array('ts' => -1))->limit($limit);  
 	foreach ($cursor as $obj) {
 		echo '<div style="line-height:130%;height:20px;" id="' . $obj['_id'] . '"><span class="date">' . date('d.m.y', $obj['ts']) . '</span>';
-		echo '<span class="name"> ' . $obj['first_name'] . '</span>: ';
+		echo '<span class="name"><b> ' . $obj['first_name'] . '</b></span>: ';
 		echo '<span class="complaint">' . $obj['complaint'] . '</span>&nbsp;&nbsp;&nbsp;';
-		echo '<!-- AddThis Button BEGIN --><div class="addthis_toolbox addthis_default_style " style="float:right; display:inline; width:600px;"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a><a class="addthis_button_tweet" tw:text="What I hate about web2.0: '. $obj['complaint'] .' via #complainr "></a><a class="addthis_counter addthis_pill_style"></a></div><!-- AddThis Button END --></div><br />';
+		echo ' <div id="' . $obj['_id'] . '" style="display:inline;"><a href="#" onClick="vote($(this).parent()[0].id);">Vote</a></div> ';
+		echo '<a href="id/' . $obj['_id'] . '">Link and Share</a><br />';
 	}
   } else {
  
@@ -45,9 +46,10 @@
   // print each document 
 	foreach ($cursor as $obj) {
 		echo '<div style="line-height:130%;height:20px;" id="' . $obj['_id'] . '"><span class="date">' . date('d.m.y', $obj['ts']) . '</span>';
-		echo '<span class="name"> ' . $obj['first_name'] . '</span>: ';
+		echo '<span class="name">><b> ' . $obj['first_name'] . '></b></span>: ';
 		echo '<span class="complaint">' . $obj['complaint'] . '</span>&nbsp;&nbsp;&nbsp;';
-		echo '<!-- AddThis Button BEGIN --><div class="addthis_toolbox addthis_default_style " style="float:right; display:inline; width:600px;"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a><a class="addthis_button_tweet" tw:text="What I hate about web2.0: '. $obj['complaint'] .' via #complainr "></a><a class="addthis_counter addthis_pill_style"></a></div><!-- AddThis Button END --></div><br />';
+		echo ' <div id="' . $obj['_id'] . '" style="display:inline;"><a href="#" onClick="alert($(this).parent()[0].id);">Vote</a></div> ';
+		echo '<a href="id/' . $obj['_id'] . '">Link and Share</a><br />';
 	}
   }
   // disconnect from server
