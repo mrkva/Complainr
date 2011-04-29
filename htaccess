@@ -1,2 +1,0 @@
-RewriteEngine On
-RewriteRule ^id/([^/\.]+)/?$ get.php?ID=$1 [L]
