@@ -144,7 +144,16 @@ xmlhttp.send();
 </td><td align="left" valign="top">
 
 <h3>Top rated complaints</h3>
+<? php
+$conn = new Mongo('localhost');
+$db = $conn->data;
+$collection = $db->items;
 
+$cursor = $collection->find();
+$cursor = $cursor->sort(array('votes' => -1))->limit($limit);
+foreach ($cursor as $obj) {
+	if ($obj['votes'] > 0) { echo 
+?>
 </td></tr> 
 	
 		
