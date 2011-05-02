@@ -28,12 +28,12 @@
 		echo '<span class="name"><b> ' . $obj['first_name'] . '</b></span>: ';
 		echo '<span class="complaint"><MARQUEE width="60%">' . $obj['complaint'] . '</MARQUEE></span>&nbsp;&nbsp;&nbsp;';
 		echo ' <div id="' . $obj['_id'] . '-v" style="display:inline;">';
-		if ($obj['ip'] == $ip) {
+		/*if ($obj['ips'] == $ip) {
   	 		echo "<font color='red'><i>" . $obj['votes'] . " vote(s)</i></font> ";
-  		} else {
+  		} else {*/
   	 		echo "<a href='#' onClick='vote($(this).parent()[0].id);'>" . $obj['votes'] . " Vote(s)</a> ";
-  		}
-  		echo '</div>';
+  		//}
+  		  		echo '</div>';
 		echo '<small><a href="id/' . $obj['_id'] . '">Link and Share</a></small><br />';
 	}
   } else {
@@ -57,11 +57,11 @@
 		echo '<span class="name"><b> ' . $obj['first_name'] . '</b></span>: ';
 		echo '<span class="complaint"><MARQUEE width="60%">' . $obj['complaint'] . '</MARQUEE></span>&nbsp;&nbsp;&nbsp;';
 		echo ' <div id="' . $obj['_id'] . '-v" style="display:inline;">';
-		if ($obj['ip'] == $ip) {
+		/*if ($obj['ips'] == $ip) {
   	 		echo "<font color='red'><i>" . $obj['votes'] . " vote(s)</i></font> ";
-  		} else {
+  		} else {*/
   	 		echo "<a href='#' onClick='vote($(this).parent()[0].id);'>" . $obj['votes'] . " Vote(s)</a> ";
-  		}
+  		//}
   		echo '</div>';
 		echo '<small><a href="id/' . $obj['_id'] . '">Link and Share</a></small><br />';
 	}

@@ -26,6 +26,7 @@ xmlhttp.open("GET","submit.php?NOENTRY=TRUE&LIMIT=7");
 xmlhttp.send();
 });
 
+
 function complain()
 {
 var first_name, last_name, complaint;
@@ -113,16 +114,19 @@ xmlhttp.send();
 <body id="main_body" >
 	<table border=2>
 
-<tr><td align="left" valign="top">
+<tr><td align="left" valign="top" width=350>
 <div id="form_container">
 	<h1>Complainr</h1>
 		<i>Ultimate web2.0 complaining and whining system.</i><br /><br />
-		<!-- AddThis Button BEGIN --><div class="addthis_toolbox addthis_default_style "><a class="addthis_button_facebook_like" fb:like:layout="button_count" addthis:url="http://complainr.com" addthis:title="Complainr" addthis:description="Web2.0 complaining platform. Share with us what you DON'T like"></a><a class="addthis_button_tweet" addthis:url="http://complainr.com" addthis:title="Complainr" addthis:description="Web2.0 complaining platform. Share with us what you DON\'T like"></a><a class="addthis_counter addthis_pill_style" addthis:url="http://complainr.com" addthis:title="Complainr" addthis:description="Web2.0 complaining platform. Share with us what you DON'T like"></a>
+		<!-- AddThis Button BEGIN --><div class="addthis_toolbox addthis_default_style "><a class="addthis_button_facebook_like" fb:like:layout="button_count" addthis:url="http://complainr.syx.sk" addthis:title="Complainr" addthis:description="Web2.0 complaining platform. Share with us what you DON'T like"></a><a class="addthis_button_tweet" addthis:url="http://complainr.syx.sk" addthis:title="Complainr" addthis:description="Web2.0 complaining platform. Share with us what you DON\'T like"></a><a class="addthis_counter addthis_pill_style" addthis:url="http://complainr.syx.sk" addthis:title="Complainr" addthis:description="Web2.0 complaining platform. Share with us what you DON'T like"></a>
 </div><script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script><script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=mrqwa"></script><!-- AddThis Button END -->
+<p>Ever felt like you cannot comprehend all this new technologies? Ever felt "too old", because you cannot keep up the pace with web2.0, node.js, ruby and cool and fresh services, frameworks and templates every week? Complain, whine and share your tears with others - CSS3 gradients-free and &lt;MARQUEE&gt; positive.
+</p>
+
 		<form id="form_155585" class="appnitro" >
 					<div class="form_description">
 		</div>						
-		<label class="description" for="NAME">Your name </label>
+		<label class="description" for="NAME">Your name: </label>
 		<span>
 			<input id="F_NAME" name= "F_NAME" class="element text" maxlength="255" size="8" value=""/>
 		</span> 
@@ -133,21 +137,22 @@ xmlhttp.send();
 		</div> 
 
 			    
-				<input id="saveForm" class="button_text" type="button" onClick="complain()" name="submit" value="Submit" />
+				<input id="saveForm" class="button_text" type="button" onClick="complain()" name="submit" value="Complain" maxlength="15" />
 <br /><br /> </form></div>
 
-</td><td align="left" valign="top" width="750px">
+</td></tr><tr><td align="left" valign="top" width="850px" height="300">
 
 <h3>Latest complaints</h3>
 		last <a href="#" onClick="limit(20)">20</a> <a href="#" onClick="limit(50)">50</a> <a href="#" onClick="limit(100)">100</a><br /><br />
 			<span id="txtHint"></span>
-</td><!--<td align="left" valign="top">
+</td></tr><tr><td align="left" valign="top">
 
 <h3>Top rated complaints</h3>
+<div id="top">
 
+<?php include("top.php"); ?></div>
 </td></tr> 
-	-->
-		
+		<tr><td><a href="http://mrkva.ovecka.be/">Mrkva</a> (CC) 2011 ∞ <a href="&#109;&#097;&#105;&#108;&#116;&#111;&#058; &#109;&#114;&#113;&#119;&#097;&#120;&#103;&#111;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">mail me</a></td></tr>
 			
 		
 		

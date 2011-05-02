@@ -17,14 +17,13 @@
   
   if ($voting == "TRUE") {
 	foreach ($cursor as $obj) { 
-		if ($obj['ip'] == $ip) {
+		/*if ($cursor2) {
 		 break;
-		} else {
-			$newData = array('$inc' => array('votes' => 1));
-			$collection->update(array( '_id' => $id), $newData);
-			$ipData = array('$set' => array('ip' => $ip));
+		} else {*/
+			//$ipData = array('$addToSet' => array('ips' => $ip), '$inc' => array('votes' => 1));
+			$ipData = array('$inc' => array('votes' => 1));
 			$collection->update(array( '_id' => $id), $ipData);
-		}
+		//}
   	}
   	
 	foreach ($cursor as $obj) {
