@@ -1,11 +1,15 @@
 <?php
 
   $f_name = $_GET['F_NAME'];
+  $f_name = strip_tags($f_name);
   $complaint = $_GET['COMPLAINT'];
+  $complaint = strip_tags($complaint);
   $ts = $_GET['TS'];
   $limit = $_GET['LIMIT'];
   $noentry = $_GET['NOENTRY'];
 
+
+  if ($limit == null) $limit = 7;
   // open connection to MongoDB server
   $conn = new Mongo('localhost');
 
@@ -23,12 +27,14 @@
 		echo '<div style="line-height:130%;height:20px;" id="' . $obj['_id'] . '"><span class="date">' . date('d.m.y', $obj['ts']) . '</span>';
 		echo '<span class="name"><b> ' . $obj['first_name'] . '</b></span>: ';
 		echo '<span class="complaint"><MARQUEE width="60%">' . $obj['complaint'] . '</MARQUEE></span>&nbsp;&nbsp;&nbsp;';
-		if ($obj['votes'] > 0) {
-			echo ' <div id="' . $obj['_id'] . '-v" style="display:inline;"><font color=red><i>' . $obj['votes'] . ' vote(s)</i></font> ';
-			} else {
-		echo ' <div id="' . $obj['_id'] . '-v" style="display:inline;"><a href="#" onClick="vote($(this).parent()[0].id);">Vote</a></div> ';
-		}
-		echo '<a href="id/' . $obj['_id'] . '">Link and Share</a><br />';
+		echo ' <div id="' . $obj['_id'] . '-v" style="display:inline;">';
+		if ($obj['ip'] == $ip) {
+  	 		echo "<font color='red'><i>" . $obj['votes'] . " vote(s)</i></font> ";
+  		} else {
+  	 		echo "<a href='#' onClick='vote($(this).parent()[0].id);'>" . $obj['votes'] . " Vote(s)</a> ";
+  		}
+  		echo '</div>';
+		echo '<small><a href="id/' . $obj['_id'] . '">Link and Share</a></small><br />';
 	}
   } else {
  
