@@ -1,4 +1,4 @@
-== Complainr ==
+# Complainr
 
 PHP + MongoDB + AJAX
 
